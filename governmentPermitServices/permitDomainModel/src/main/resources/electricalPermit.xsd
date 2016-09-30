@@ -17,4 +17,6 @@
 	<xs:element name="raiseElectricalPermitResponse" type="pr:permitResponse" />
 	<xs:element name="electricalPermitStatusRequest" type="pr:permitStatusRequest" />
 	<xs:element name="electricalPermitStatusResponse" type="pr:permitStatusResponse" />
+	<xs:element name="electricalPermitRescindRequest" type="pr:permitStatusRequest" />
+	<xs:element name="electricalPermitRescindResponse" type="pr:permitResponse" />
 </xs:schema>

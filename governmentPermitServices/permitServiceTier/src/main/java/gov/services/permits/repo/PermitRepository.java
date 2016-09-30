@@ -24,7 +24,9 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import gov.services.permits.Ack;
 import gov.services.permits.PermitRequest;
+import gov.services.permits.PermitResponse;
 import gov.services.permits.PermitStatus;
 import gov.services.permits.PermitStatusResponse;
 
@@ -82,5 +84,23 @@ public interface PermitRepository {
 		PermitStatusResponse result = permitRequests.getOrDefault(requestId, null);
 		log.info("the request " + requestId + " is in status: " + result);
 		return result;
+	}
+
+	/**
+	 * 
+	 * @param requestId
+	 * @return
+	 */
+	public default PermitResponse rescindPermit(String requestId) {
+		log.info("Rescind permit request with id: " + requestId);
+		PermitResponse response = new PermitResponse();
+		if (permitRequests.containsKey(requestId)) {
+			permitRequests.remove(requestId);
+			response.setAck(Ack.ACCEPTED);
+		} else {
+			response.setAck(Ack.REJECTED);
+			response.setRejectReason("The requested permit id: " + requestId + " is no longer in the system.");
+		}
+		return response;
 	}
 }

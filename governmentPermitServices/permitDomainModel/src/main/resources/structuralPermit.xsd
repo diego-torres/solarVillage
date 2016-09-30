@@ -17,4 +17,6 @@
 	<xs:element name="raiseStructuralPermitResponse" type="pr:permitResponse" />
 	<xs:element name="structuralPermitStatusRequest" type="pr:permitStatusRequest" />
 	<xs:element name="structuralPermitStatusResponse" type="pr:permitStatusResponse" />
+	<xs:element name="structuralPermitRescindRequest" type="pr:permitStatusRequest" />
+	<xs:element name="structuralPermitRescindResponse" type="pr:permitResponse" />
 </xs:schema>

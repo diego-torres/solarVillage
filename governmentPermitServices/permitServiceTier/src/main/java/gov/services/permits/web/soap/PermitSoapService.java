@@ -69,4 +69,13 @@ public interface PermitSoapService {
 	default PermitStatusResponse permitStatus(PermitStatusRequest request){
 		return getPermitRepository().queryStatus(request.getRequestId());
 	}
+	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	default PermitResponse rescindPermit(PermitStatusRequest request){
+		return getPermitRepository().rescindPermit(request.getRequestId());
+	}
 }

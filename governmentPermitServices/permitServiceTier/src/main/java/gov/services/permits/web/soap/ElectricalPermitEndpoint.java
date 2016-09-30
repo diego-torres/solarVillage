@@ -39,8 +39,7 @@ public class ElectricalPermitEndpoint implements PermitSoapService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * gov.services.permits.web.soap.PermitSoapService#raisePermit(gov.
+	 * @see gov.services.permits.web.soap.PermitSoapService#raisePermit(gov.
 	 * services.permits.repo.PermitRequest)
 	 */
 	@PayloadRoot(namespace = NS_URI, localPart = "raiseElectricalPermitRequest")
@@ -51,14 +50,25 @@ public class ElectricalPermitEndpoint implements PermitSoapService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * gov.services.permits.web.soap.PermitSoapService#permitStatus(gov.
+	 * @see gov.services.permits.web.soap.PermitSoapService#permitStatus(gov.
 	 * services.permits.repo.PermitStatusRequest)
 	 */
 	@Override
 	@PayloadRoot(namespace = NS_URI, localPart = "electricalPermitStatusRequest")
 	public PermitStatusResponse permitStatus(@RequestPayload PermitStatusRequest request) {
 		return PermitSoapService.super.permitStatus(request);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gov.services.permits.web.soap.PermitSoapService#rescindPermit(gov.
+	 * services.permits.PermitStatusRequest)
+	 */
+	@Override
+	@PayloadRoot(namespace = NS_URI, localPart = "electricalPermitRescindRequest")
+	public PermitResponse rescindPermit(@RequestPayload PermitStatusRequest request) {
+		return PermitSoapService.super.rescindPermit(request);
 	}
 
 	/*

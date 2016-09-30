@@ -82,4 +82,16 @@ public class StructuralPermitEndpoint implements PermitSoapService {
 		return PermitSoapService.super.permitStatus(request);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gov.services.permits.web.soap.PermitSoapService#rescindPermit(gov.
+	 * services.permits.PermitStatusRequest)
+	 */
+	@Override
+	@PayloadRoot(namespace = NS_URI, localPart = "structuralPermitRescindRequest")
+	public PermitResponse rescindPermit(@RequestPayload PermitStatusRequest request) {
+		return PermitSoapService.super.rescindPermit(request);
+	}
+
 }
