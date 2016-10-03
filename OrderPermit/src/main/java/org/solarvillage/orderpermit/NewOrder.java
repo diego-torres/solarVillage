@@ -11,12 +11,19 @@ public class NewOrder implements java.io.Serializable
 
    static final long serialVersionUID = 1L;
 
-   @org.kie.api.definition.type.Label(value = "Beneficiary Full Name")
+   @org.kie.api.definition.type.Label("Beneficiary Full Name")
    private java.lang.String beneficiary;
-   @org.kie.api.definition.type.Label(value = "Address")
+   @org.kie.api.definition.type.Label("Address")
    private java.lang.String address;
-   @org.kie.api.definition.type.Label(value = "Approved")
+   @org.kie.api.definition.type.Label("Approved")
    private java.lang.Boolean approved;
+
+   @org.kie.api.definition.type.Label("Electrical Contract Number")
+   private java.lang.String electricalContractNumber;
+
+   @org.kie.api.definition.type.Description(value = "Required by the Structural permit")
+   @org.kie.api.definition.type.Label(value = "Building Description")
+   private java.lang.String buildingDescription;
 
    public NewOrder()
    {
@@ -52,12 +59,36 @@ public class NewOrder implements java.io.Serializable
       this.approved = approved;
    }
 
+   public java.lang.String getElectricalContractNumber()
+   {
+      return this.electricalContractNumber;
+   }
+
+   public void setElectricalContractNumber(
+         java.lang.String electricalContractNumber)
+   {
+      this.electricalContractNumber = electricalContractNumber;
+   }
+
+   public java.lang.String getBuildingDescription()
+   {
+      return this.buildingDescription;
+   }
+
+   public void setBuildingDescription(java.lang.String buildingDescription)
+   {
+      this.buildingDescription = buildingDescription;
+   }
+
    public NewOrder(java.lang.String beneficiary, java.lang.String address,
-         java.lang.Boolean approved)
+         java.lang.Boolean approved, java.lang.String electricalContractNumber,
+         java.lang.String buildingDescription)
    {
       this.beneficiary = beneficiary;
       this.address = address;
       this.approved = approved;
+      this.electricalContractNumber = electricalContractNumber;
+      this.buildingDescription = buildingDescription;
    }
 
 }

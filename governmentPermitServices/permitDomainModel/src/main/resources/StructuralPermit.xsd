@@ -1,0 +1,70 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://services.gov/permits/structural" targetNamespace="http://services.gov/permits/structural"
+	elementFormDefault="qualified">
+
+	<xs:simpleType name="ack">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACCEPTED" />
+			<xs:enumeration value="REJECTED" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="permitDetailsRequest">
+		<xs:sequence>
+			<xs:element name="requestId" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="permitStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PENDING" />
+			<xs:enumeration value="APPROVED" />
+			<xs:enumeration value="DENIED" />
+			<xs:enumeration value="UNKNOWN" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="RaiseStructuralPermitRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="beneficiary" type="xs:string" />
+				<xs:element name="address" type="xs:string" />
+				<xs:element name="buildingDescription" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RaiseStructuralPermitResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="requestId" type="xs:string" />
+				<xs:element name="rejectReason" type="xs:string" />
+				<xs:element name="ack" type="tns:ack"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StructuralPermitStatusRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="requestId" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StructuralPermitStatusResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="tns:permitStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RescindStructuralPermitRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="requestId" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RescindStructuralPermitResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

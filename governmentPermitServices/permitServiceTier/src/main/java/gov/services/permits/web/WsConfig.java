@@ -18,6 +18,7 @@ package gov.services.permits.web;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
@@ -28,11 +29,6 @@ import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
 import gov.services.permits.repo.ElectricalPermitRepository;
-import gov.services.permits.repo.PermitRepository;
-import gov.services.permits.repo.StructuralPermitRepository;
-import gov.services.permits.web.soap.ElectricalPermitEndpoint;
-import gov.services.permits.web.soap.PermitSoapService;
-import gov.services.permits.web.soap.StructuralPermitEndpoint;
 
 /**
  * Registers the SOAP Web service handlers.
@@ -42,31 +38,8 @@ import gov.services.permits.web.soap.StructuralPermitEndpoint;
  */
 @EnableWs
 @Configuration
+@ComponentScan(basePackageClasses = { ElectricalPermitRepository.class })
 public class WsConfig extends WsConfigurerAdapter {
-
-	@Bean
-	public PermitRepository electricalPermitRepository() {
-		return new ElectricalPermitRepository();
-	}
-
-	@Bean
-	public PermitRepository structuralPermitRepository() {
-		return new StructuralPermitRepository();
-	}
-
-	@Bean
-	public PermitSoapService electricalPermitEndpoint() {
-		ElectricalPermitEndpoint epe = new ElectricalPermitEndpoint();
-		epe.setPermitRepository(electricalPermitRepository());
-		return epe;
-	}
-
-	@Bean
-	public PermitSoapService structuralPermitEndpoint() {
-		StructuralPermitEndpoint spe = new StructuralPermitEndpoint();
-		spe.setPermitRepository(structuralPermitRepository());
-		return spe;
-	}
 
 	/**
 	 * Message Dispatcher Servlet.
@@ -83,45 +56,43 @@ public class WsConfig extends WsConfigurerAdapter {
 	}
 
 	/**
-	 * Electrical permit wsdl and endpoint configuration.
 	 * 
 	 * @param electricalPermitSchema
 	 * @return
 	 */
-	@Bean(name = "electricalPermit")
-	public DefaultWsdl11Definition electricalWsdl11Definition(XsdSchema electricalPermitSchema) {
+	@Bean(name = "electricalPermitService")
+	public DefaultWsdl11Definition electricalPermitWsdl11Definition() {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("ElectricalPermitPort");
-		wsdl11Definition.setLocationUri("http://localhost:8080/governmentPermitServices/soap/electricalPermit");
+		wsdl11Definition.setPortTypeName("ElectricalPermitServicePort");
+		wsdl11Definition.setLocationUri("http://localhost:8080/governmentPermitServices/soap/electricalPermitService");
 		wsdl11Definition.setTargetNamespace("http://services.gov/permits/electrical");
-		wsdl11Definition.setSchema(electricalPermitSchema);
+		wsdl11Definition.setSchema(electricalPermitSchema());
 		return wsdl11Definition;
 	}
 
 	/**
-	 * Structural permit wsdl and endpoint configuration.
 	 * 
-	 * @param structuralPermitSchema
+	 * @param electricalPermitSchema
 	 * @return
 	 */
-	@Bean(name = "structuralPermit")
-	public DefaultWsdl11Definition structuralWsdl11Definition(XsdSchema structuralPermitSchema) {
+	@Bean(name = "structuralPermitService")
+	public DefaultWsdl11Definition structuralPermitWsdl11Definition() {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("StructuralPermitPort");
-		wsdl11Definition.setLocationUri("http://localhost:8080/governmentPermitServices/soap/structuralPermit");
+		wsdl11Definition.setPortTypeName("StructuralPermitServicePort");
+		wsdl11Definition.setLocationUri("http://localhost:8080/governmentPermitServices/soap/structuralPermitService");
 		wsdl11Definition.setTargetNamespace("http://services.gov/permits/structural");
-		wsdl11Definition.setSchema(structuralPermitSchema);
+		wsdl11Definition.setSchema(structuralPermitSchema());
 		return wsdl11Definition;
 	}
 
 	/**
-	 * electrical permit schema loading
+	 * structural permit schema instantiation.
 	 * 
 	 * @return
 	 */
 	@Bean
 	public XsdSchema electricalPermitSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("electricalPermit.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("ElectricalPermit.xsd"));
 	}
 
 	/**
@@ -131,6 +102,6 @@ public class WsConfig extends WsConfigurerAdapter {
 	 */
 	@Bean
 	public XsdSchema structuralPermitSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("structuralPermit.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("StructuralPermit.xsd"));
 	}
 }
