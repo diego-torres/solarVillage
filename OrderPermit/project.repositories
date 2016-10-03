@@ -3,7 +3,7 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>jboss-plugins</id>
+        <id>jboss-snapshot</id>
         <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
         <source>SETTINGS</source>
       </metadata>
@@ -11,23 +11,7 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>local</id>
-        <url>/home/jboss/.m2/repository</url>
-        <source>LOCAL</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>guvnor-m2-repo</id>
-        <url>http://192.168.0.17:8080/business-central/maven2/</url>
-        <source>PROJECT</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>jboss</id>
+        <id>jboss-plugins</id>
         <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
         <source>SETTINGS</source>
       </metadata>
@@ -43,9 +27,9 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>central</id>
-        <url>https://repo.maven.apache.org/maven2</url>
-        <source>PROJECT</source>
+        <id>jboss</id>
+        <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+        <source>SETTINGS</source>
       </metadata>
     </repository>
     <repository>
@@ -59,9 +43,25 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>jboss-snapshot</id>
-        <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-        <source>SETTINGS</source>
+        <id>guvnor-m2-repo</id>
+        <url>http://192.168.0.17:8080/business-central/maven2/</url>
+        <source>PROJECT</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>local</id>
+        <url>/home/jboss/.m2/repository</url>
+        <source>LOCAL</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>central</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+        <source>PROJECT</source>
       </metadata>
     </repository>
   </repositories>
