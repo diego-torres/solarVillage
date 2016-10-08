@@ -7,7 +7,7 @@ Solar Village home work assignment for advanced process development with Red Hat
 
   ```
   $ cd $GIT_REPOSITORY/governmentPermitServices
-  $ mvn install -P war -Djavax.xml.access=all
+  $ mvn install -P war -Djavax.xml.accessExternalSchema=all
   ```
   
 3. Copy the target resources from the Maven projects to your JBoss Server: 
