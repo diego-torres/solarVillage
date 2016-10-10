@@ -10,18 +10,21 @@ public class HoaMeeting implements java.io.Serializable
 
    static final long serialVersionUID = 1L;
 
-   @org.kie.api.definition.type.Label(value = "Meeting Date")
+   @org.kie.api.definition.type.Label("Meeting Date")
    private java.util.Date meetingDate;
-   @org.kie.api.definition.type.Label(value = "Association Name")
+   @org.kie.api.definition.type.Label("Association Name")
    private java.lang.String associationName;
-   @org.kie.api.definition.type.Label(value = "Representative Name")
+   @org.kie.api.definition.type.Label("Representative Name")
    private java.lang.String representativeName;
-   @org.kie.api.definition.type.Label(value = "quorum")
+   @org.kie.api.definition.type.Label("quorum")
    private java.util.List<java.lang.String> quorum;
-   @org.kie.api.definition.type.Label(value = "Meeting Details")
+   @org.kie.api.definition.type.Label("Meeting Details")
    private java.lang.String meetingDetails;
-   @org.kie.api.definition.type.Label(value = "Installation Approved")
+   @org.kie.api.definition.type.Label("Installation Approved")
    private java.lang.Boolean installationApproved;
+
+   @org.kie.api.definition.type.Label(value = "Location")
+   private java.lang.String meetingLocation;
 
    public HoaMeeting()
    {
@@ -87,12 +90,21 @@ public class HoaMeeting implements java.io.Serializable
       this.installationApproved = installationApproved;
    }
 
-   public HoaMeeting(java.util.Date meetingDate,
-         java.lang.String associationName,
+   public java.lang.String getMeetingLocation()
+   {
+      return this.meetingLocation;
+   }
+
+   public void setMeetingLocation(java.lang.String meetingLocation)
+   {
+      this.meetingLocation = meetingLocation;
+   }
+
+   public HoaMeeting(java.util.Date meetingDate, java.lang.String associationName,
          java.lang.String representativeName,
          java.util.List<java.lang.String> quorum,
          java.lang.String meetingDetails,
-         java.lang.Boolean installationApproved)
+         java.lang.Boolean installationApproved, java.lang.String meetingLocation)
    {
       this.meetingDate = meetingDate;
       this.associationName = associationName;
@@ -100,6 +112,7 @@ public class HoaMeeting implements java.io.Serializable
       this.quorum = quorum;
       this.meetingDetails = meetingDetails;
       this.installationApproved = installationApproved;
+      this.meetingLocation = meetingLocation;
    }
 
 }

@@ -246,7 +246,7 @@
                             		</div>
                             		<label for="name">NotStartedReassign</label>
                             		<div class="div_checkbox">
-                              		<![CDATA[[users:|groups:executives]@[3m]]]>
+                              		<![CDATA[[users:|groups:executives]@[#{timerBoundary}]]]>
                             		</div>
 
             <div class="clear"></div>

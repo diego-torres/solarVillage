@@ -50,11 +50,51 @@
 		var myInputs = new Array();
 					myInputs[i] = document.getElementById("hoaApproved");
 					i++;
+					myInputs[i] = document.getElementById("address");
+					i++;
+					myInputs[i] = document.getElementById("beneficiary");
+					i++;
+					myInputs[i] = document.getElementById("buildingDescription");
+					i++;
+					myInputs[i] = document.getElementById("electricalContract");
+					i++;
+					myInputs[i] = document.getElementById("timerBoundary");
+					i++;
 
 
 		var j=0;
 						if(notEmpty(myInputs[j]) && !isAlphanumeric(myInputs[j])) {
 							alert("Please enter valid hoaApproved");
+							myInputs[j].focus();
+							return false;
+						}
+					j++;
+						if(notEmpty(myInputs[j]) && !isAlphanumeric(myInputs[j])) {
+							alert("Please enter valid address");
+							myInputs[j].focus();
+							return false;
+						}
+					j++;
+						if(notEmpty(myInputs[j]) && !isAlphanumeric(myInputs[j])) {
+							alert("Please enter valid beneficiary");
+							myInputs[j].focus();
+							return false;
+						}
+					j++;
+						if(notEmpty(myInputs[j]) && !isAlphanumeric(myInputs[j])) {
+							alert("Please enter valid buildingDescription");
+							myInputs[j].focus();
+							return false;
+						}
+					j++;
+						if(notEmpty(myInputs[j]) && !isAlphanumeric(myInputs[j])) {
+							alert("Please enter valid electricalContract");
+							myInputs[j].focus();
+							return false;
+						}
+					j++;
+						if(notEmpty(myInputs[j]) && !isAlphanumeric(myInputs[j])) {
+							alert("Please enter valid timerBoundary");
 							myInputs[j].focus();
 							return false;
 						}
@@ -219,6 +259,31 @@
                             		<label for="name">hoaApproved</label>
                             		<div class="div_checkbox">
                               		<input name="hoaApproved" type="checkbox" class="checkbox" id="hoaApproved" value="true" />
+                            		</div>
+              	
+                            		<label for="name">address</label>
+                            		<div class="div_texbox">
+                              		<input name="address" type="text" class="textbox" id="address" value="" />
+                            		</div>
+              	
+                            		<label for="name">beneficiary</label>
+                            		<div class="div_texbox">
+                              		<input name="beneficiary" type="text" class="textbox" id="beneficiary" value="" />
+                            		</div>
+              	
+                            		<label for="name">buildingDescription</label>
+                            		<div class="div_texbox">
+                              		<input name="buildingDescription" type="text" class="textbox" id="buildingDescription" value="" />
+                            		</div>
+              	
+                            		<label for="name">electricalContract</label>
+                            		<div class="div_texbox">
+                              		<input name="electricalContract" type="text" class="textbox" id="electricalContract" value="" />
+                            		</div>
+              	
+                            		<label for="name">timerBoundary</label>
+                            		<div class="div_texbox">
+                              		<input name="timerBoundary" type="text" class="textbox" id="timerBoundary" value="" />
                             		</div>
               	
 
