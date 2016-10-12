@@ -3,18 +3,7 @@
 <property name="name" value="HoaMeetingResults-taskform.form"/>
 <property name="displayMode" value="default"/>
 <property name="status" value="0"/>
-<field position="0" name="associationMeeting_meetingDate" type="InputDate" id="743604452">
-<property name="fieldRequired" value="true"/>
-<property name="groupWithPrevious" value="false"/>
-<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Meeting Datequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="readonly" value="false"/>
-<property name="inputBinding" value="associationMeeting/meetingDate"/>
-<property name="outputBinding" value="associationMeeting/meetingDate"/>
-<property name="fieldClass" value="java.util.Date"/>
-</field>
-<field position="1" name="associationMeeting_associationName" type="InputText" id="1793344852">
+<field position="0" name="associationMeeting_associationName" type="InputText" id="1793344852">
 <property name="fieldRequired" value="false"/>
 <property name="groupWithPrevious" value="false"/>
 <property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Association Namequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
@@ -27,7 +16,7 @@
 <property name="outputBinding" value="associationMeeting/associationName"/>
 <property name="fieldClass" value="java.lang.String"/>
 </field>
-<field position="2" name="associationMeeting_representativeName" type="InputText" id="1811543950">
+<field position="1" name="associationMeeting_representativeName" type="InputText" id="1811543950">
 <property name="fieldRequired" value="true"/>
 <property name="groupWithPrevious" value="false"/>
 <property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Representative Namequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
@@ -40,7 +29,7 @@
 <property name="outputBinding" value="associationMeeting/representativeName"/>
 <property name="fieldClass" value="java.lang.String"/>
 </field>
-<field position="3" name="associationMeeting_quorum" bag-type="java.lang.String" type="MultipleInput" id="42967444">
+<field position="2" name="associationMeeting_quorum" bag-type="java.lang.String" type="MultipleInput" id="42967444">
 <property name="fieldRequired" value="false"/>
 <property name="groupWithPrevious" value="false"/>
 <property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quorum listquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
@@ -53,6 +42,7 @@
 </field>
 <field position="4" name="associationMeeting_meetingDetails" type="HTMLEditor" id="557699185">
 <property name="fieldRequired" value="false"/>
+<property name="groupWithPrevious" value="false"/>
 <property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Meeting Detailsquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
 <property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
@@ -63,7 +53,7 @@
 <property name="outputBinding" value="associationMeeting/meetingDetails"/>
 <property name="fieldClass" value="java.lang.String"/>
 </field>
-<field position="5" name="associationMeeting_installationApproved" type="CheckBox" id="1509238537">
+<field position="3" name="associationMeeting_installationApproved" type="CheckBox" id="1509238537">
 <property name="fieldRequired" value="true"/>
 <property name="groupWithPrevious" value="false"/>
 <property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Installation Approvedquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
