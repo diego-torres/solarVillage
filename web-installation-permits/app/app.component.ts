@@ -1,58 +1,7 @@
-import { Component } from '@angular/core';
-import { InstallationPermit } from './installation-permit';
+import { Component, OnInit } from '@angular/core';
 
-const INSTALLATION_PERMITS: InstallationPermit[] = [
-  {id: 1,
-  beneficiaryName: 'Diego Torres',
-  installationAddress: 'Valle Grande Sur #1528',
-  electricityContractNumber: '3344-6655-88990',
-  buildingDescription: 'A two story building home'},
-  {id: 2,
-  beneficiaryName: 'Esperanza Romero',
-  installationAddress: 'Calle de los lagos 3314',
-  electricityContractNumber: '3344-6655-55332',
-  buildingDescription: 'simple home, concrete'},
-  {id: 3,
-  beneficiaryName: 'Jesus Ortega',
-  installationAddress: 'Tecamachalco 4825',
-  electricityContractNumber: '3344-6655-44332',
-  buildingDescription: 'big building close to park'},
-  {id: 4,
-  beneficiaryName: 'Mario Gomez',
-  installationAddress: 'Plaza de Tixtla 808',
-  electricityContractNumber: '3344-6655-77684',
-  buildingDescription: 'apartments for rent'},
-  {id: 5,
-  beneficiaryName: 'Jorge Montes',
-  installationAddress: 'Ignacio Ramirez 500',
-  electricityContractNumber: '3344-6655-34521',
-  buildingDescription: 'A two story building home'},
-  {id: 6,
-  beneficiaryName: 'Daniela Romo',
-  installationAddress: 'Francisco I Madero 3350',
-  electricityContractNumber: '3344-6655-99873',
-  buildingDescription: 'A two story building home'},
-  {id: 7,
-  beneficiaryName: 'Gabriel Soto',
-  installationAddress: 'Alamo 1425',
-  electricityContractNumber: '3344-6655-44789',
-  buildingDescription: 'A two story building home'},
-  {id: 8,
-  beneficiaryName: 'Juan Carlos Vazquez',
-  installationAddress: 'Ave Henequen 1488',
-  electricityContractNumber: '3344-6655-88663',
-  buildingDescription: 'A two story building home'},
-  {id: 9,
-  beneficiaryName: 'Fernando Bravo',
-  installationAddress: 'Guajolote 5410',
-  electricityContractNumber: '3344-6655-22447',
-  buildingDescription: 'A two story building home'},
-  {id: 10,
-  beneficiaryName: 'Cesar Romero',
-  installationAddress: 'Vicente Guerrero 9910',
-  electricityContractNumber: '3344-6655-00763',
-  buildingDescription: 'A two story building home'}
-];
+import { InstallationPermit } from './installation-permit';
+import { PermitService } from './permit.service';
 
 @Component({
   selector: 'solar-village-permits',
@@ -113,12 +62,25 @@ const INSTALLATION_PERMITS: InstallationPermit[] = [
       </li>
     </ul>
     <permit-detail [permit]="selectedPermit"></permit-detail>
-    `
+    `,
+  providers: [PermitService]
 })
 export class AppComponent {
     title                 = 'Solar village Installation Permits';
-    installationPermits = INSTALLATION_PERMITS;
-    selectedPermit : InstallationPermit;
+    installationPermits: InstallationPermit[];
+    selectedPermit: InstallationPermit;
+
+    constructor(private permitService: PermitService) { }
+
+    getPermits(): void {
+      this.permitService.getPermits().then(
+        installationPermits => this.installationPermits = installationPermits
+      );
+    }
+
+    ngOnInit(): void{
+      this.getPermits();
+    }
 
     onSelect(permit: InstallationPermit): void {
       this.selectedPermit = permit;
