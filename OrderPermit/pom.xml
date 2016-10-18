@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.solarVillage</groupId>
   <artifactId>OrderPermit</artifactId>
-  <version>2.3</version>
+  <version>3.4</version>
   <packaging>kjar</packaging>
   <name>OrderPermit</name>
   <description>Residential and Home Owner Association installation order processing.</description>
