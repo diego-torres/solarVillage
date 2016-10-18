@@ -45,5 +45,10 @@ public class PermitStatusRequest implements java.io.Serializable
       this.permitType = permitType;
       this.permitRequestId = permitRequestId;
    }
+   
+   public String toString(){
+       return "PermitStatusRequest: {permitRequestId:" + permitRequestId 
+       + ", permitType:" + permitType + "}";
+   }
 
 }
