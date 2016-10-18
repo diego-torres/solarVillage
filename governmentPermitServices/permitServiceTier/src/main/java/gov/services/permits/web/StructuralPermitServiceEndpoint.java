@@ -90,7 +90,7 @@ public class StructuralPermitServiceEndpoint {
 	 * @param request
 	 * @return
 	 */
-	@PayloadRoot(namespace = NS_URI, localPart = "RescindStructuralPermitResponse")
+	@PayloadRoot(namespace = NS_URI, localPart = "RescindStructuralPermitRequest")
 	@ResponsePayload
 	public RescindStructuralPermitResponse rescindStructuralPermit(
 			@RequestPayload RescindStructuralPermitRequest request) {
