@@ -16,7 +16,8 @@
 			<version>2.4</version>
 		</dependency>
 	</dependencies>
-	<build>
+	<!-- use when generating the sources from xsd: use -Djavax.xml.accessExternalSchema=all to allow external xsd Instructions -->
+	<!-- <build>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -53,12 +54,11 @@
 				<artifactId>jaxws-maven-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
-					<!-- Needed with JAXP 1.5 -->
 					<vmArgs>
 						<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
 					</vmArgs>
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>
+	</build> -->
 </project>
