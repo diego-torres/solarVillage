@@ -28,7 +28,9 @@ Solar Village home work assignment for advanced process development with Red Hat
 > **Note:** This is required to avoid an exception related to the timerService-id (Issue #1).
 
 ### Using Kie-server only
-1. Build and deploy the kjar from the OrderPermit project to your kie server.
+
+Build and deploy the kjar from the OrderPermit project to your kie server.
+
 ## Execute examples
 1. Start a **RESIDENTIAL** permit:
 
