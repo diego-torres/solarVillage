@@ -60,10 +60,37 @@ $ cp ~/gits/governmentPermitServices/permitServiceTier/target/governmentPermitSe
 # Build and deploy the business assets in BPM Suite
 ## Using Business Central
 ### 1. Clone the repository to your BPM Suite Organization.
-### 2. Deploy the OrderPermit project.
-### 3. Using the Deploy > Rule deployments option: Create a container based in the OrderPermit deployment.
-### 4. Start the container.
-### 5. If you are using the same VM for the Business Central and the kie-server: undeploy the business-central
+
+BPM Suite provides a web based graphical interface to interact with the business assets and the Kie-server.
+
+1. Login to BPMS using jboss/bpms username and password.
+2. If required add an organization from the __Authoring > Administration > Organizational Units > Manage Organizational Units__ option.
+3. Use the __Authoring > Administration > Repositories > Clone Repository__ option to clone the git repository with the following details:
+  * **Business Central userId / password** : jboss / bpms
+  * **Organizational Unit Manager** : __[Use your organization name]__
+  * **Repository Name** : solarvillage
+  * **Git URL**: https://github.com/diego-torres/solarVillage.git
+
+### 2. Build/Deploy the OrderPermit project.
+
+By following these steps, you will be able to create the kjar component in your Busuness Central repository so you can later deploy it to a container.
+
+1. Using BPMS, navigate to __Authoring > Project Authoring__
+2. Using the Project Editor select the __Build > Build & Deploy__ option
+3. Using the __Process Management > Process Definitions__, check that the different process definitions have been deployed to your business central:
+
+  * RescindGovernmentPermit:2.0
+  * GovernmentPermitMonitor:3.0
+  * GovernmentOrderPermit:7.1
+  * HoaPermitOrder:2.3
+  * GovernmentPermitMonitorWrapper:1.4
+  * ResidentialPermitOrder:1.1
+
+### 3. Create and start a kie-server container.
+
+
+
+### 5. Undeploy the business-central
 
 > **Note:** This is required to avoid an exception related to the timerService-id (Issue #1).
 
