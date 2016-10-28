@@ -1,0 +1,28 @@
+[{
+  "id": "1",
+  "Username": "jboss",
+  "Password": "bpms",
+  "First": "Jboss",
+  "Last": "BPMS"
+},
+{
+  "id": "2",
+  "Username": "guest",
+  "Password": "letmein",
+  "First": "Guest",
+  "Last": "Visitor"
+},
+{
+  "id": "3",
+  "Username": "user",
+  "Password": "pass",
+  "First": "John",
+  "Last": "Doe"
+},
+{
+  "id": "4",
+  "Username": "alice",
+  "Password": "x",
+  "First": "Alice",
+  "Last": "Carroll"
+}]

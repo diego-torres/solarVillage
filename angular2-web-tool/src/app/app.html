@@ -1,0 +1,37 @@
+<div>
+  <sv-login-modal
+    (onSubmit)="actions.loginUser($event)"
+    [hasError]="hasError$ | async"
+    [isPending]="isLoading$ | async"
+    *ngIf="loggedOut$ | async">
+  </sv-login-modal>
+  <sv-navigator testid="navigator">
+    <sv-navigator-item [mr]=true>
+      <sv-logo></sv-logo>
+    </sv-navigator-item>
+    <sv-navigator-item *ngIf="loggedIn$ | async" [mr]=true>
+      <a [routerLink]="['/counter']"
+        class="text-decoration-none">Counter</a>
+    </sv-navigator-item>
+
+    <sv-navigator-item *ngIf="loggedIn$ | async">
+      <a [routerLink]="['/about']"
+        class="text-decoration-none">About Us</a>
+    </sv-navigator-item>
+
+    <div class="flex flex-auto"></div>
+
+    <sv-navigator-item testid="user-profile" *ngIf="loggedIn$ | async" [mr]=true>
+      {{ firstName$ | async }} {{ lastName$ | async }}
+    </sv-navigator-item>
+
+    <sv-navigator-item [hidden]="loggedOut$ | async">
+      <sv-button className="bg-red white" (click)="actions.logoutUser()" >
+        Logout
+      </sv-button>
+    </sv-navigator-item>
+  </sv-navigator>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
