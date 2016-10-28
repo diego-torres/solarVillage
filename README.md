@@ -125,7 +125,7 @@ $ mv ~/lab/bpms/standalone/deployments/business-central.war.deployed \
 ~/lab/bpms/standalone/deployments/business-central.war.undeploy
 ```
 
-Now you are ready to [Execute the processes][execute-the-processes].
+Now you are ready to [Execute the processes](#execute-the-processes).
 
 # Use kie-server only installation
 ## Install kie-server
