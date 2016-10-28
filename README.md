@@ -33,7 +33,7 @@ It is required to clone the remote maven repository in order to build and deploy
 
 ### 2. Build the Maven components
 
-The war and jar components that will serve the government permit SOAP web services are built during this step. We are using Maven, and as an standard practice, those components will be generated in their respective __target__ folders.
+The war and jar components that will serve the government permit SOAP web services are built during this step. We are using Maven, and as an standard practice, those components will be generated in their respective _target_ folders.
 
 Using the git repository that we cloned in the previous step, execute the maven install command:
 
@@ -64,10 +64,10 @@ $ cp ~/gits/governmentPermitServices/permitServiceTier/target/governmentPermitSe
 BPM Suite provides a web based graphical interface to interact with the business assets and the Kie-server.
 
 1. Login to BPMS using jboss/bpms username and password.
-2. If required add an organization from the __Authoring > Administration > Organizational Units > Manage Organizational Units__ option.
-3. Use the __Authoring > Administration > Repositories > Clone Repository__ option to clone the git repository with the following details:
+2. If required add an organization from the _Authoring > Administration > Organizational Units > Manage Organizational Units_ option.
+3. Use the _Authoring > Administration > Repositories > Clone Repository_ option to clone the git repository with the following details:
   * **Business Central userId / password** : jboss / bpms
-  * **Organizational Unit Manager** : __[Use your organization name]__
+  * **Organizational Unit Manager** : _[Use your organization name]_
   * **Repository Name** : solarvillage
   * **Git URL**: https://github.com/diego-torres/solarVillage.git
 
@@ -75,9 +75,9 @@ BPM Suite provides a web based graphical interface to interact with the business
 
 By following these steps, you will be able to create the kjar component in your Busuness Central repository so you can later deploy it to a container.
 
-1. Using BPMS, navigate to __Authoring > Project Authoring__
-2. Using the Project Editor select the __Build > Build & Deploy__ option
-3. Using the __Process Management > Process Definitions__, check that the different process definitions have been deployed to your business central:
+1. Using BPMS, navigate to _Authoring > Project Authoring_
+2. Using the Project Editor select the _Build > Build & Deploy_ option
+3. Using the _Process Management > Process Definitions_, check that the different process definitions have been deployed to your business central:
 
   * RescindGovernmentPermit:2.0
   * GovernmentPermitMonitor:3.0
@@ -88,17 +88,50 @@ By following these steps, you will be able to create the kjar component in your 
 
 ### 3. Create and start a kie-server container.
 
+By following these steps, you will enable to add a container to your kie-server instance using the integration with business-central.
+Each container is related to a GAV - Group, ArtifactId and Version, of a Maven artifact. This maven artifact must be a kjar and once we create a container from it, we can execute its processes and rules.
 
+From the previous step, we deployed our kjar for the OrderPermit project to the business-central repository, so the business-central knows about the existence of the kjar required to create a kie-server container.
+
+1. Using BPMS, navigate to _Deploy > Rule Deployments_
+2. Select a __SERVER TEMPLATE__
+3. Use the _Add Container_ option
+4. From the GAV options, select _org.solarVillage.OrderPermit:8.3_
+5. Use **order_permit** as the container name
+6. Click Next.
+7. Use the following details for the _Process Configuration_:
+  * **Runtime strategy**: Per Process instance
+  * **Kie Base Name**: kb-order_permit
+  * **Kie Session Name**: ks-order_permit
+  * **Merge mode (deployment descriptor)**: Merge Collections
+8. Click Finish.
+9. Click the Start button of the KIE CONTAINER you have just created.
 
 ### 5. Undeploy the business-central
 
-> **Note:** This is required to avoid an exception related to the timerService-id (Issue #1).
+This step is required to avoid an exception related to the timerService-id (Issue #1).
+
+The gpte-bpms-advanced virtual machine has the business-central web application, which interferes with some functionallity of the kie-server web application, hence we will undeploy the business-central to allow the kie-server to execute the processes without any constraints. One of the observed constraints is that the Human Task timers and the Timer Catch components throw an exception when triggered:
+
+```
+java.lang.RuntimeException: No scheduler found for order_permit-timerServiceId
+ 	at org.jbpm.persistence.timer.GlobalJpaTimerJobInstance.call(GlobalJpaTimerJobInstance.java:71)
+```
+
+In order to undeploy the business-central execute the following command in your VM Terminal:
+
+```
+$ mv ~/lab/bpms/standalone/deployments/business-central.war.deployed \
+~/lab/bpms/standalone/deployments/business-central.war.undeploy
+```
+
+Now you are ready to [Execute the processes].
 
 # Use kie-server only installation
 ## Install kie-server
 ## Deploy container and kjar
 
-# Execute examples
+# Execute the processes
 1. Start a **RESIDENTIAL** permit:
 
   ```
@@ -119,9 +152,9 @@ By following these steps, you will be able to create the kjar component in your 
   http://localhost:8080/kie-server/services/rest/server/containers/order_permit/processes/hoa_permit_process/instances
   ```
 
-  > Use a date 8 days or more in the future so the task can be assigned to the __sales__ group, otherwise it will be assigned to __executives__ automatically.
+  > Use a date 8 days or more in the future so the task can be assigned to the _sales_ group, otherwise it will be assigned to _executives_ automatically.
 
-  * use __sales__ or __executives__ roles to claim tasks for Home owner association approval.
+  * use _sales_ or _executives_ roles to claim tasks for Home owner association approval.
   * After Home owner association approval, watch the government permits pass through the log.
 
 3. Claim a Home owner association approval task.
