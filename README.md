@@ -48,10 +48,11 @@ $ mvn install -P war
 
 The war and jar components that provide the SOAP web service finctionality are Spring-Boot components that can be deployed to any java web server environment.
 
-1. Copy the target resources from the Maven projects to JBoss Server:
+Copy the target resources from the Maven projects to JBoss Server:
 
 ```
-$ cp ~/gits/governmentPermitServices/permitServiceTier/target/governmentPermitServices.war ~/lab/bpms/standalone/deployments
+$ cp ~/gits/governmentPermitServices/permitServiceTier/target/governmentPermitServices.war \
+ ~/lab/bpms/standalone/deployments
 ```
 
 > **Note:** the POM for OrderPermit project includes the dependency instruction for governmentPermitServices parent project.
@@ -74,14 +75,21 @@ $ cp ~/gits/governmentPermitServices/permitServiceTier/target/governmentPermitSe
 1. Start a **RESIDENTIAL** permit:
 
   ```
-  $ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" --user jboss:bpms -d '{"address":"123 main street", "beneficiary":"John Doe", "buildingDescription":"big house close to the park", "electricalContractNumber":"32019283749"}' http://localhost:8080/kie-server/services/rest/server/containers/order_permit/processes/residential-permit-process/instances
+  $ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" --user jboss:bpms \
+  -d '{"address":"123 main street", "beneficiary":"John Doe", \
+  "buildingDescription":"big house close to the park", "electricalContractNumber":"32019283749"}' \
+  http://localhost:8080/kie-server/services/rest/server/containers/order_permit/processes/residential-permit-process/instances
   ```
 
   * watch the government processes pass through the log and finally state the approval or denial of the permits.
 2. Start a **HOME OWNER ASSOCIATION** permit:
 
   ```
-  curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" --user jboss:bpms -d '{"address":"123 main street", "beneficiary":"John Lee", "buildingDescription":"big house close to the park", "electricalContract":"32019283749", "associationMeetingDate":"01/26/2017"}' http://192.168.0.7:8080/kie-server/services/rest/server/containers/order_permit/processes/hoa_permit_process/instances
+  curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" --user jboss:bpms \
+  -d '{"address":"123 main street", "beneficiary":"John Lee", \
+  "buildingDescription":"big house close to the park", "electricalContract":"32019283749", \
+  "associationMeetingDate":"01/26/2017"}' \
+  http://localhost:8080/kie-server/services/rest/server/containers/order_permit/processes/hoa_permit_process/instances
   ```
 
   > Use a date 8 days or more in the future so the task can be assigned to the __sales__ group, otherwise it will be assigned to __executives__ automatically.
