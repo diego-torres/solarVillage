@@ -127,9 +127,90 @@ $ mv ~/lab/bpms/standalone/deployments/business-central.war.deployed \
 
 Now you are ready to [Execute the processes].
 
-# Use kie-server only installation
-## Install kie-server
+# Use an additional Kie Server installation
+
+In this section we will use an additional installation of the **Kie Server** in a **WildFly 10** web server.
+
+Just to refresh our memory: The *Kie Server* is a Java web application that allow us to expose rules and business process to be executed remotely using REST and JMS interfaces. The difference between the *Kie Server* and the *business-central* is that *Kie Server* is focused in remote execution, while *business-central* offers a complete authoring evironment, including process execution features and a remote API.
+
+The *Kie Server* is a web application that can be deployed in JBoss EAP, Wildfly, Tomcat or any other Java application server or web container. It works by accessing kjars from a Maven repository and exposing its rules and processes throught HTTP or JMS.
+
+## Install Kie Server
+
+### Prerequisites
+
+The machine where we will install the additional Kie Server need the following installed software:
+
+* JVM 8
+* Maven
+
+### Install
+
+1. Download and unzip wildfly 10 : http://wildfly.org/downloads/
+
+  ```
+  $ mkdir ~/wildfly
+  $ cd ~/wildfly
+  $ wget http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz
+  $ tar --strip-components=1 -zxf wildfly-10.1.0.Final.tar.gz
+  ```
+
+2. Download and unzip the _Kie Server_ web components : https://www.drools.org/download/download.html
+
+  ```
+  $ cd ~/wildfly
+  $ wget https://download.jboss.org/drools/release/6.5.0.Final/kie-server-distribution-6.5.0.Final.zip
+  $ unzip kie-server-distribution-6.5.0.Final.zip "kie-server-6.5.0.Final-ee7.war" -d ~/wildfly/standalone/deployments/
+  $ mv ~/wildfly/standalone/deployments/kie-server-6.5.0.Final-ee7.war ~/wildfly/standalone/deployments/kie-server.war
+  ```
+
+3. Add an application user with the role kie-server using the add-user script:
+
+  ```
+  $ ~/wildfly/bin/add-user.sh -a -u kieserver -p kieserver1! -g admin,kie-server
+  ```
+
+4. Start wildfly using the standalone-full.xml profile and providing a few _Kie Server_ parameters:
+
+  ```
+  $ ~/wildfly/bin/standalone.sh  -c standalone-full.xml -Dorg.kie.server.id=bpm-kie-server -Dorg.kie.server.location=http://localhost:8080/kie-server/services/rest/server
+  ```
+
+5. Test the installation by executing:
+
+  ```
+  $ curl -u "kieserver:kieserver1!" http://localhost:8080/kie-server/services/rest/server
+  ```
+
+  Should return the main information about the _Kie Server_ installation:
+
+  ```
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <response type="SUCCESS" msg="Kie Server info">
+      <kie-server-info>
+          <capabilities>KieServer</capabilities>
+          <capabilities>BRM</capabilities>
+          <capabilities>BPM</capabilities>
+          <capabilities>BPM-UI</capabilities>
+          <capabilities>BRP</capabilities>
+          <location>http://localhost:8080/kie-server/services/rest/server</location>
+          <messages>
+              <content>Server KieServerInfo{serverId='bpm-kie-server', version='6.5.0.Final', location='http://localhost:8080/kie-server/services/rest/server'}started successfully at Fri Oct 28 14:11:47 MDT 2016</content>
+              <severity>INFO</severity>
+              <timestamp>2016-10-28T14:11:47.911-06:00</timestamp>
+          </messages>
+          <name>bpm-kie-server</name>
+          <id>bpm-kie-server</id>
+          <version>6.5.0.Final</version>
+      </kie-server-info>
+  </response>
+  ```
+
 ## Deploy container and kjar
+
+### Create the container
+
+
 
 # Execute the processes
 1. Start a **RESIDENTIAL** permit:
