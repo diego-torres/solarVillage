@@ -49,11 +49,19 @@ exports.json = {
   loader: 'json-loader',
 };
 
-exports.svg = makeFileLoader(/\.svg$/);
+//exports.svg = makeFileLoader(/\.svg$/);
 exports.eot = makeFileLoader(/\.eot$/);
 exports.woff = makeFileLoader(/\.woff$/);
 exports.woff2 = makeFileLoader(/\.woff2$/);
 exports.ttf = makeFileLoader(/\.ttf$/);
+
+exports.png = {
+  test: /\.(jpe?g|png|gif|svg)$/i,
+  loaders: [
+    'file?hash=sha512&digest=hex&name=[hash].[ext]',
+    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+  ]
+};
 
 function makeFileLoader(pattern) {
   return {

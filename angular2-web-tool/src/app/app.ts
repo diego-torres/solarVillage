@@ -25,7 +25,6 @@ import {dev} from '../configuration';
   selector: 'solar-village-app',
   // Allow app to define global styles.
   encapsulation: ViewEncapsulation.None,
-  styles: [ require('../styles/index.css') ],
   template: require('./app.html')
 })
 export class SolarVillageApp {

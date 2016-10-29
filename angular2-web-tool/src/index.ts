@@ -5,7 +5,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {SolarVillageAppModule} from './app/app.module';
 import {enableProdMode} from '@angular/core';
 
-import {dev, test, production} from './configuration';
+import {production, test} from './configuration';
 
 if (production) {
   enableProdMode();

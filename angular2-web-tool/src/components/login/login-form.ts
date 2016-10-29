@@ -61,9 +61,9 @@ import{ FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
   `
 })
 export class SolarVillageLoginForm {
-  @Input isPending: boolean;
-  @Input hasError: boolean;
-  @Output onSubmit: EventEmitter<Object> = new EventEmitter();
+  @Input() isPending: boolean;
+  @Input() hasError: boolean;
+  @Output() onSubmit: EventEmitter<Object> = new EventEmitter();
 
   username: FormControl;
   password: FormControl;
