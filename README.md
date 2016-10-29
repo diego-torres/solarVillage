@@ -154,7 +154,7 @@ To create the container we use the REST API by sending a PUT HTTP request to the
 
 
 # 4. Execute the processes
-1. Start a **RESIDENTIAL** permit:
+1. Start a **RESIDENTIAL** permit request:
 
   ```
   $ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" --user jboss:bpms \
@@ -167,7 +167,7 @@ To create the container we use the REST API by sending a PUT HTTP request to the
 2. Start a **HOME OWNER ASSOCIATION** permit:
 
   ```
-  curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" --user jboss:bpms \
+  $ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" --user jboss:bpms \
   -d '{"address":"123 main street", "beneficiary":"John Lee", \
   "buildingDescription":"big house close to the park", "electricalContract":"32019283749", \
   "associationMeetingDate":"01/26/2017"}' \
@@ -183,12 +183,44 @@ To create the container we use the REST API by sending a PUT HTTP request to the
 
   1. Add a _sales_ user by executing the following command:
 
-  2. List the available tasks to be claimed by the _sales_ user:
+    ```
+    $ ~/lab/bpms/bin/add-user.sh -u sales_user -p secret -g sales -a -s -sc ~/lab/bpms/standalone/configuration
+    ```
+
+  2. Add an _executive_ user:
+
+    ```
+    $ ~/lab/bpms/bin/add-user.sh -u executive_user -p secret -g executives -a -s -sc ~/lab/bpms/standalone/configuration
+    ```
+
+  2. List the available tasks to be claimed by the _sales_ group:
+
+    ```
+    $ curl -X GET -H "Accept: application/json" --user jboss:bpms "http://localhost:8080/kie-server/services/rest/server/queries/tasks/instances/pot-owners?groups=sales"
+    ```
 
   3. Claim a task:
 
-  4. List claimed tasks:
+    ```
+    $ curl -X PUT -H "Accept: application/json" --user sales_user:secret "http://localhost:8080/kie-server/services/rest/server/containers/order_permit/tasks/1/states/claimed"
+    ```
+
+    > **NOTE**: This can only be done when authenticating as a user who is a potential owner of the task. If the user is not a potential owner, an exception message is returned.
+
+  4. List claimed tasks (owned by a user):
+
+    ```
+    $ curl -X GET -H "Accept: application/json" --user sales_user:secret "http://localhost:8080/kie-server/services/rest/server/queries/tasks/instances/owners"
+    ```
 
 4. Approve the Home owner association permit.
 
   Complete the claimed task with approval result:
+
+  ```
+  $ curl -X PUT -H "Accept: application/json" --user sales_user:secret "http://localhost:8080/kie-server/services/rest/server/containers/order_permit/tasks/1/states/completed"
+  ```
+
+# 5. Conclusion
+  JBPM Business Suite provides an adequate tool for development of the Solar Village Business Processes. One of the main factors considered in this evaluation were the options for scalability and out-of-the-box tools like its powerful REST API available throught the kie-server.
+  JBPM Business Suite may not be an ideal development tool for integration services, it is better suitable for business process shaping, mapping and monitoring through its wait states.
