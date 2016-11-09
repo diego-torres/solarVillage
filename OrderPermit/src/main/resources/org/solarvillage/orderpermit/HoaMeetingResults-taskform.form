@@ -3,66 +3,31 @@
 <property name="name" value="HoaMeetingResults-taskform.form"/>
 <property name="displayMode" value="default"/>
 <property name="status" value="0"/>
-<field position="0" name="associationMeeting_associationName" type="InputText" id="1793344852">
+<field position="0" name="associationName" type="InputText" id="1615740730">
 <property name="fieldRequired" value="false"/>
-<property name="groupWithPrevious" value="false"/>
-<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Association Namequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="label" value="quot;enquot;,quot;associationName (associationName)quot;"/>
 <property name="readonly" value="false"/>
-<property name="isHTML" value="false"/>
-<property name="hideContent" value="false"/>
-<property name="inputBinding" value="associationMeeting/associationName"/>
-<property name="outputBinding" value="associationMeeting/associationName"/>
+<property name="inputBinding" value="associationName"/>
+<property name="outputBinding" value="associationName"/>
 <property name="fieldClass" value="java.lang.String"/>
 </field>
-<field position="1" name="associationMeeting_representativeName" type="InputText" id="1811543950">
-<property name="fieldRequired" value="true"/>
-<property name="groupWithPrevious" value="false"/>
-<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Representative Namequot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="readonly" value="false"/>
-<property name="isHTML" value="false"/>
-<property name="hideContent" value="false"/>
-<property name="inputBinding" value="associationMeeting/representativeName"/>
-<property name="outputBinding" value="associationMeeting/representativeName"/>
-<property name="fieldClass" value="java.lang.String"/>
-</field>
-<field position="2" name="associationMeeting_quorum" bag-type="java.lang.String" type="MultipleInput" id="42967444">
+<field position="1" name="installationApproved" type="CheckBox" id="2127998760">
 <property name="fieldRequired" value="false"/>
-<property name="groupWithPrevious" value="false"/>
-<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quorum listquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="label" value="quot;enquot;,quot;installationApproved (installationApproved)quot;"/>
 <property name="readonly" value="false"/>
-<property name="inputBinding" value="associationMeeting/quorum"/>
-<property name="outputBinding" value="associationMeeting/quorum"/>
-<property name="fieldClass" value="java.util.List"/>
-</field>
-<field position="4" name="associationMeeting_meetingDetails" type="HTMLEditor" id="557699185">
-<property name="fieldRequired" value="false"/>
-<property name="groupWithPrevious" value="false"/>
-<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Meeting Detailsquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="readonly" value="false"/>
-<property name="isHTML" value="false"/>
-<property name="hideContent" value="false"/>
-<property name="inputBinding" value="associationMeeting/meetingDetails"/>
-<property name="outputBinding" value="associationMeeting/meetingDetails"/>
-<property name="fieldClass" value="java.lang.String"/>
-</field>
-<field position="3" name="associationMeeting_installationApproved" type="CheckBox" id="1509238537">
-<property name="fieldRequired" value="true"/>
-<property name="groupWithPrevious" value="false"/>
-<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Installation Approvedquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
-<property name="readonly" value="false"/>
-<property name="inputBinding" value="associationMeeting/installationApproved"/>
-<property name="outputBinding" value="associationMeeting/installationApproved"/>
+<property name="inputBinding" value="installationApproved"/>
+<property name="outputBinding" value="installationApproved"/>
 <property name="fieldClass" value="java.lang.Boolean"/>
 </field>
-<dataHolder inputId="associationMeeting" name="#FF54A7" type="dataModelerEntry" outId="associationMeeting" value="org.solarvillage.orderpermit.HoaMeeting" id="associationMeeting"/>
+<field position="2" name="meetingDetails" type="InputText" id="1793367906">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;meetingDetails (meetingDetails)quot;"/>
+<property name="readonly" value="false"/>
+<property name="inputBinding" value="meetingDetails"/>
+<property name="outputBinding" value="meetingDetails"/>
+<property name="fieldClass" value="java.lang.String"/>
+</field>
+<dataHolder inputId="associationName" name="#E9E371" type="basicType" outId="associationName" value="java.lang.String" id="associationName"/>
+<dataHolder inputId="installationApproved" name="#E9E371" type="basicType" outId="installationApproved" value="java.lang.Boolean" id="installationApproved"/>
+<dataHolder inputId="meetingDetails" name="#E9E371" type="basicType" outId="meetingDetails" value="java.lang.String" id="meetingDetails"/>
 </form>
